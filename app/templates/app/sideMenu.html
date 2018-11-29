@@ -1,0 +1,77 @@
+{% load static %}
+{% if usuario != null %}
+<div class="col-md-1" id="menuSide">
+
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="/home">
+                <h2><i class="fas fa-exclamation"></i></h2>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/forum"><i class="fas fa-comments"></i></a>
+        </li>
+        <li class="nav-item">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-id="{{usuario.id}}" data-target="#myModalProjeto">Novo Projeto</a>
+        </li>
+
+        <li class="nav-item">
+            <!-- Bot�o dropup padr�o -->
+            <div class="btn-group dropup">
+
+                <a href="#" class="nav-link dropdown-toggle foto" style="margin-left: -7px;" data-toggle="dropdown">
+
+                    {% if usuario.avatar %}
+                        <img class="avatar" src="/media/{{usuario.avatar}}" style="width: 30px">
+                        <small class="nomeUsuario">{{usuario.nomeUsuario|upper}}</small>
+                    {% else %}
+                        <img class="avatar" src="{% static '/app/imgs/padrao.jpg'%}" style="width: 30px">
+                        <small class="nomeUsuario">{{usuario.nomeUsuario|upper}}</small>
+                    {% endif %}
+                        
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="/usuario/logado">Meus Projetos</a>
+                    <a class="dropdown-item" href="/usuario/perfil/{{usuario.id}}">Editar Perfil</a>
+                    <a class="dropdown-item" href="/usuario/logout">Sair</a>
+                </div>
+
+            </div>
+
+        </li>
+    </ul>
+
+</div>
+{% else %}
+
+<div class="col-md-1" id="menuSide">
+
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="/home">
+                <h2><i class="fas fa-exclamation"></i></h2>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" style="color:white;" href="/usuario/entrar">Entrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active btn btn-outline-light" href="/usuario/cadastrar">Inscrever-se</a>
+        </li>
+
+    </ul>
+
+
+</div>
+
+
+
+
+
+
+</nav>
+
+
+
+{% endif %}

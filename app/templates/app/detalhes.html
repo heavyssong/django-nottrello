@@ -1,0 +1,135 @@
+<h4>Tarefas</h4>
+<div class="row">
+
+    <div class="col-sm-9">
+        <input class="form-control" id="myInput" type="text" placeholder="Pesquisar..">
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-primary" data-toggle="modal" data-projeto="{{projeto.id}}" data-target="#myModalTarefa">
+            <i class="fas fa-plus"></i> Nova Tarefa
+        </button>
+    </div>
+
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if tarefas.has_previous %}
+        <a href="?page={{ tarefas.previous_page_number }}"><i class="fas fa-backward"></i></a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}.
+        </span>
+
+        {% if tarefas.has_next %}
+        <a href="?page={{ tarefas.next_page_number }}"><i class="fas fa-forward"></i></a>
+        {% endif %}
+    </span>
+</div>
+<table class=" table table-hover" style="width:100%">
+
+    <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Data de Criação</th>
+        <th>Vencimento</th>
+        <th>Status</th>
+        <th>Ações</th>
+
+    </tr>
+
+    {% for tarefa in tarefas %}
+    <tbody id="myTable">
+        {% if tarefa.status.id == 1%}
+        <tr>
+
+            <td style="border-left: 12px solid #FFEB3B;">{{tarefa.nome}}</td>
+            <td id="descricao">{{tarefa.descricao}}</td>
+            <td>{{tarefa.data_criacao}}</td>
+            <td>{{tarefa.data_vencimento}}</td>
+            <td>{{tarefa.status}}</td>
+
+            <td>
+                <a href="#" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="/tarefa/editar/{{tarefa.id}}">Editar</a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myAlertaTarefa" data-id="{{tarefa.id}}">Excluir</a>
+
+                </div>
+            </td>
+
+        </tr>
+
+
+        {% elif tarefa.status.id == 2%}
+        <tr>
+            <td style="border-left: 12px solid #FF5722;">{{tarefa.nome}}</td>
+            <td id="descricao">{{tarefa.descricao}}</td>
+            <td>{{tarefa.data_criacao}}</td>
+            <td>{{tarefa.data_vencimento}}</td>
+            <td>{{tarefa.status}}</td>
+
+
+            <td>
+                <a href="#" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="/tarefa/editar/{{tarefa.id}}">Editar</a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myAlertaTarefa" data-id="{{tarefa.id}}">Excluir</a>
+
+                </div>
+            </td>
+        </tr>
+
+        {% else %}
+        <tr>
+            <td style="border-left: 12px solid #4CAF50;">{{tarefa.nome}}</td>
+            <td id="descricao">{{tarefa.descricao}}</td>
+            <td>{{tarefa.data_criacao}}</td>
+            <td>{{tarefa.data_vencimento}}</td>
+            <td>{{tarefa.status}}</td>
+
+
+            <td>
+                <a href="#" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="/tarefa/editar/{{tarefa.id}}">Editar</a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myAlertaTarefa" data-id="{{tarefa.id}}">Excluir</a>
+
+                </div>
+            </td>
+        </tr>
+
+        {% endif %}
+
+    </tbody>
+
+    {% endfor %}
+</table>
+<div class="pagination">
+    <span class="step-links">
+        {% if tarefas.has_previous %}
+        <a href="?page={{ tarefas.previous_page_number }}"><i class="fas fa-backward"></i></a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}.
+        </span>
+
+        {% if tarefas.has_next %}
+        <a href="?page={{ tarefas.next_page_number }}"><i class="fas fa-forward"></i></a>
+        {% endif %}
+    </span>
+</div>

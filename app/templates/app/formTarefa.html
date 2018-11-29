@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/app//style/usuarioLogadoStylecss.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app//style/style.css'%}">
+    <title>Nottrello - Editar Tarefa</title>
+</head>
+
+<body>
+    <!-- sibar -->
+    {% include "app/navbar.html" %}
+
+    <!-- content -->
+    <div class="container-fluid text-center">
+
+
+        <div class="col-lg-10 col-xl-9 mx-auto text-left">
+            <div id="app">                
+                <br>
+                <h4>Tarefa</h4>
+                <form method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        {{ formTarefa.as_p }}
+                        
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success" style="margin-left: 20px;">Salvar</button>
+                    <a href="/projeto/{{projeto.id}}" class="btn btn-danger">Cancelar</a>
+
+
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    {% include "app/modalProjeto.html" %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script>
+
+            $('#myModalProjeto').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var id = button.data('usuario') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+    
+                modal.find('.modal-body input#id_usuario').val(id);
+            });
+        </script>
+</body>
+
+</html>

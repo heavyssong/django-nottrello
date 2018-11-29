@@ -1,0 +1,24 @@
+<div class="row">
+    {% for projeto in projetos %}
+    <div class="col-sm-6" style="margin-bottom:30px;">
+
+        <div class="card w-100 h-100">
+            <h5 class="card-header"> <a href="/projeto/{{projeto.id}}">{{projeto.nome}}</a></h5>
+            <div class="card-body">
+
+                <p class="card-text">{{projeto.detalhes}}.</p>
+
+            </div>
+        </div>
+
+
+    </div>
+    {% endfor %}
+</div>
+
+<input type="hidden" value="{{qtPendente}}" id="pendente">
+<input type="hidden" value="{{qtEmAndamento}}" id="andamento">
+<input type="hidden" value="{{qtConcluido}}" id="concluido">
+<canvas class="bar" width="700" height="300">
+
+</canvas>

@@ -1,0 +1,26 @@
+<div class="col-md-12" id="main">
+        <h3>Resumo - {{projeto.nome}}</h3>
+
+        <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                     aria-controls="nav-home" aria-selected="true">Em cards</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                     aria-controls="nav-profile" aria-selected="false">Em gráfico</a>
+                    
+                </div>
+            </nav>
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        {% include "app/resumoCards.html" %}
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <input type="hidden" value="{{qtPendente}}" id="pendente">
+                        <input type="hidden" value="{{qtEmAndamento}}" id="andamento">
+                        <input type="hidden" value="{{qtConcluido}}" id="concluido">
+                        <canvas class="biscoito" width="300" height="100"></canvas>
+                </div>
+
+
+            </div>
+    </div>
