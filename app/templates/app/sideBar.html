@@ -1,0 +1,35 @@
+{% load static %}
+
+<div class="col-md-2" id="sideBar">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<h6 style="margin-left:30px">
+				{{projeto.nome}}
+
+			</h6>
+		</li>
+		<li class="nav-item">
+				<a href="#" data-toggle="modal" data-target="#myAlertaDeleteProjeto" data-id="{{projeto.id}}">
+					<i class="far fa-times-circle" style="color: red; margin-left: 40px;"></i>
+	
+				</a>
+				<a href="/projeto/editar/{{projeto.id}}"><i class="fas fa-pencil-alt"></i>
+				</a>
+				{% if projeto.status.id != 3 %}
+				<a href="#" data-toggle="modal" data-target="#myAlertaConcluirProjeto" data-id="{{projeto.id}}">
+					<i class="far fa-check-circle" style="color: green;"></i>
+				</a>
+				{% endif %}
+	
+			</li>
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#resumo">Resumo</a>
+		</li>
+		<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#detalhes">Detalhes</a>
+		</li>
+	</ul>
+
+
+</div>

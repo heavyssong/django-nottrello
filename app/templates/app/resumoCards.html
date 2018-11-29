@@ -1,0 +1,71 @@
+<div class="row">
+        <div class="col-md-4">
+    
+            <div class="card" style="border: solid #FFEB3B;">
+                <div class="card-header">PENDENTE - {{qtPendente}}</div>
+                <div class="card-body">
+                        {% for tarefa in tarefas %}
+    
+                        {% if tarefa.status.id == 1 %}
+    
+    
+                            <h5 class="card-title">{{tarefa.nome}}</h5>
+                            <p class="card-text">{{tarefa.descricao}}</p>
+                            <hr>
+    
+    
+                        {% endif %}
+    
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+    
+            <div class="card" style="border: solid #FF5722;">
+                <div class="card-header">EM ANDAMENTO - {{qtEmAndamento}}</div>
+                <div class="card-body">
+                        {% for tarefa in tarefas %}
+    
+                        {% if tarefa.status.id == 2 %}
+    
+    
+                        <h5 class="card-title">{{tarefa.nome}}</h5>
+                        <p class="card-text">{{tarefa.descricao}}</p>
+                            <hr>
+    
+    
+                        {% endif %}
+    
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+    
+            <div class="card" style="border: solid #4CAF50;">
+                <div class="card-header">CONCLUÍDA - {{qtConcluido}}</div>
+                <div class="card-body">
+                        {% for tarefa in tarefas %}
+    
+                        {% if tarefa.status.id == 3 %}
+    
+    
+                        <h5 class="card-title">{{tarefa.nome}}</h5>
+                        <p class="card-text">{{tarefa.descricao}}</p>
+                            <hr>
+    
+    
+                        {% endif %}
+    
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    </div>

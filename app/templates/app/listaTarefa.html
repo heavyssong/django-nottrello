@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/app/style/usuarioLogadoStylecss.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/app/style/style.css'%}">
+    <title>!Trello</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    {% include "app/navbar.html" %}
+
+    <!-- content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- navbar -->
+            {% include "app/sideBar.html" %}
+
+
+            <div class="col-md-10" id="main">
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane container fade " id="resumo">{% include "app/resumo.html" %}</div>
+                    <div class="tab-pane container active" id="detalhes">{% include "app/detalhes.html" %}</div>
+                    
+                </div>
+
+
+                <!-- <div id="app">
+
+                    <h4>Tarefas</h4>
+                    <div class="row">
+
+                        <div class="col-sm-9">
+                            <input class="form-control" id="myInput" type="text" placeholder="Pesquisar..">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" data-toggle="modal" data-projeto="{{projeto.id}}"
+                                data-target="#myModalTarefa">
+                                <i class="fas fa-plus"></i> Nova Tarefa
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if tarefas.has_previous %}
+                            <a href="?page={{ tarefas.previous_page_number }}"><i class="fas fa-backward"></i></a>
+                            {% endif %}
+
+                            <span class="current">
+                                Página {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}.
+                            </span>
+
+                            {% if tarefas.has_next %}
+                            <a href="?page={{ tarefas.next_page_number }}"><i class="fas fa-forward"></i></a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    <table class=" table table-hover" style="width:100%">
+
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Data de Criação</th>
+                            <th>Vencimento</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                        {% for tarefa in tarefas %}
+                        <tbody id="myTable">
+                            {% if tarefa.status.id == 1%}
+                            <tr>
+
+                                <td style="border-left: 12px solid #FFEB3B;">{{tarefa.nome}}</td>
+                                <td id="descricao">{{tarefa.descricao}}</td>
+                                <td>{{tarefa.data_criacao}}</td>
+                                <td>{{tarefa.data_vencimento}}</td>
+                                <td>{{tarefa.status}}</td>
+
+
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#myAlertaTarefa"
+                                        data-id="{{tarefa.id}}">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a id="btnEditar" href="/tarefa/editar/{{tarefa.id}}" class="btn btn-dark btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            {% elif tarefa.status.id == 2%}
+                            <tr>
+                                <td style="border-left: 12px solid #FF5722;">{{tarefa.nome}}</td>
+                                <td id="descricao">{{tarefa.descricao}}</td>
+                                <td>{{tarefa.data_criacao}}</td>
+                                <td>{{tarefa.data_vencimento}}</td>
+                                <td>{{tarefa.status}}</td>
+
+
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#myAlertaTarefa"
+                                        data-id="{{tarefa.id}}" id="excluirTarefa">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a id="btnEditar" href="/tarefa/editar/{{tarefa.id}}" class="btn btn-dark btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            {% else %}
+                            <tr>
+                                <td style="border-left: 12px solid #4CAF50;">{{tarefa.nome}}</td>
+                                <td id="descricao">{{tarefa.descricao}}</td>
+                                <td>{{tarefa.data_criacao}}</td>
+                                <td>{{tarefa.data_vencimento}}</td>
+                                <td>{{tarefa.status}}</td>
+
+
+                                <td>
+
+                                    <a href="#" data-toggle="modal" data-target="#myAlertaTarefa" data-id="{{tarefa.id}}"
+                                        class="btn btn-danger btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a id="btnEditar" href="/tarefa/editar/{{tarefa.id}}" class="btn btn-dark btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            {% endif %}
+
+                        </tbody>
+
+                        {% endfor %}
+                    </table>
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if tarefas.has_previous %}
+                            <a href="?page={{ tarefas.previous_page_number }}"><i class="fas fa-backward"></i></a>
+                            {% endif %}
+
+                            <span class="current">
+                                Página {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}.
+                            </span>
+
+                            {% if tarefas.has_next %}
+                            <a href="?page={{ tarefas.next_page_number }}"><i class="fas fa-forward"></i></a>
+                            {% endif %}
+                        </span>
+                    </div>
+
+
+                </div> -->
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--Modals-->
+    {% include "app/modalTarefa.html" %}
+    {% include "app/modalProjeto.html" %}
+    {% include "app/alertaExcluirTarefa.html" %}
+    {% include "app/alertaExcluirProjeto.html" %}
+    {% include "app/alertaConcluirProjeto.html" %}
+    {% include "app/modalPergunta.html" %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        var biscoito = document.getElementsByClassName('biscoito');
+        var qtTarefaPendente = document.getElementById('pendente');
+        var qtTarefaEmAndamento = document.getElementById('andamento');
+        var qtTarefaConcluido = document.getElementById('concluido');
+        var myChart = new Chart(biscoito, {
+            type: 'doughnut',
+            data: {
+                labels: ['Pendente', 'Em Andamento', 'Concluído'],
+                datasets: [{
+                    label: "Tarefas",
+                    data: [qtTarefaPendente.value, qtTarefaEmAndamento.value, qtTarefaConcluido.value],
+                    backgroundColor: ["#FFEB3B", "#FF5722", "#4CAF50"],
+                }],
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontSize: 12
+                    }
+                }
+            }
+        });
+
+        $('a[data-target="#myAlertaTarefa"]').on('click', function (event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+            $('.delete').attr('href', '/tarefa/excluir/' + id);
+            $('#myAlertaTarefa').modal('show');
+        });
+
+        $('a[data-target="#myAlertaDeleteProjeto"]').on('click', function (event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+            $('.delete').attr('href', '/projeto/excluir/' + id);
+            $('#myAlertaDeleteProjeto').modal('show');
+        });
+
+        $('a[data-target="#myAlertaConcluirProjeto"]').on('click', function (event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+            $('.ok').attr('href', '/projeto/concluir/' + id);
+            $('#myAlertaConcluirProjeto').modal('show');
+        });
+
+
+
+        $('#myModalProjeto').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('usuario') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+
+            modal.find('.modal-body input#id_usuario').val(id);
+        });
+
+        $('#myModalTarefa').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('projeto') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+
+            modal.find('.modal-body input#id_projeto').val(id);
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

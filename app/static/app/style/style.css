@@ -1,0 +1,154 @@
+
+#descricao{
+    max-width: 200px; overflow: hidden; text-overflow: ellipsis;
+}
+
+.logo{
+	width: 130px;
+	margin-top:-3px;
+	margin-left: 100px;
+}
+.avatar{
+    width: 250px;
+    border-radius: 22px;
+
+}
+.logo:hover{
+	opacity: 0.9;
+}
+
+textarea {
+  resize:none;
+}
+
+
+li > a{
+    color:black;
+    padding:10px;
+}
+
+li > a:hover{
+    text-decoration : none;
+
+	
+}
+
+
+
+.navbar-nav{
+	margin-right: 100px;
+	
+}
+
+.dropdown {
+	margin-top: 7px;
+}
+
+#projetos{
+	width: 200px;
+}
+
+/* Layout novo */
+html, body{
+    height: 100%;
+    width: 100%;
+    font-size: 17px;
+}
+
+ul{
+    list-style: none;
+}
+
+
+#menuSide{
+    
+    background-color: #3f9ebd;
+    list-style: none;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    
+}
+#menuSide i{
+    color: white;
+}
+
+.foto{
+    
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+      
+}
+.foto:hover{
+    color: white;
+}
+.nomeUsuario{
+    position: relative;
+    bottom: 0;
+    left: 0px;
+}
+.foto img{
+    width: 30px;     
+    border-radius: 22px;
+}
+
+
+
+.dropdown-toggle{
+    color: white;
+    
+}
+
+.dropup .dropdown-toggle::after {
+    margin-left: -0.124em;
+}
+
+
+
+
+#sideBar{
+    padding-top: 20px;
+    background-color: rgb(240, 242, 245);
+    color: rgb(41, 58, 94);
+    font-weight: bolder;
+    list-style: none;     
+    position: initial;
+    margin-left: auto;
+    height: 800px;
+   
+   
+}
+
+#sideBar a{
+    color: rgb(139, 149, 157);
+    font-weight: inherit;
+    text-align: center;
+    width:  200px;
+     
+
+}
+
+#sideBar a:hover{
+    color: rgb(0, 73, 176);
+    background-color: rgb(229,232,236);
+    
+    
+}
+
+#main{
+    background-color: white;
+    padding: 14px;
+    font-size: 13px;
+    
+    
+}
+
+#main h3{
+    color: rgb(33, 56, 97);
+}
+
+
+
+
+
